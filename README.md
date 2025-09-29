@@ -5,7 +5,7 @@
 Krishi Sahayak is a full-stack web application designed to empower farmers with essential tools and information, including secure user authentication and an AI-powered chatbot for real-time agricultural advice.
 
 This project is built with:
-* **Frontend:** React (Vite) with Tailwind CSS for a modern, responsive user interface.
+* **Frontend:** React (Vite) with for a modern, responsive user interface.
 * **Backend:** Node.js (Express) handling API requests, database interactions, and business logic.
 * **Database:** MySQL for storing user data.
 * **Authentication:** Clerk.dev for secure and scalable user management (login, signup, social logins).
