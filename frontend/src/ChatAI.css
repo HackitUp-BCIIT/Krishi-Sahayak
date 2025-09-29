@@ -1,0 +1,418 @@
+/* --- Main Container --- */
+.chat-ai-page-container { 
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f7f9f7; /* Light grayish-green background */
+    font-family: Arial, sans-serif;
+}
+
+/* --- Chat Header --- */
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 3%;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.chat-logo {
+    font-size: 18px;
+    font-weight: 600;
+    color: #387034;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-icon {
+    font-size: 22px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.notification-bell {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.profile-avatar {
+    width: 35px;
+    height: 35px;
+    background-image: url('https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAxL3JtNjA5LXNvbGlkaWNvbi13LTAwMi1wLnBuZw.png');
+    background-size: cover;
+    border-radius: 50%;
+}
+
+.chat-back-button {
+    background: none;
+    border: none;
+    color: #387034;
+    font-size: 24px;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0 10px 0 0;
+    margin-left: -5px; 
+    transition: color 0.2s;
+}
+
+.chat-back-button:hover {
+    color: #4CAF50;
+}
+
+/* --- Main Layout --- */
+
+.chat-main-layout {
+  display: flex;
+  flex-grow: 1;
+  height: calc(100vh - 65px); /* Adjusted for header */
+}
+
+/* --- HISTORY PANEL (LEFT - THREAD LIST) --- */
+
+.chat-history-panel {
+  width: 300px; /* Fixed width for better control */
+  min-width: 250px;
+  background-color: #f0f4f0;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  display: flex; 
+  flex-direction: column;
+}
+
+.new-chat-button {
+  padding: 10px 15px;
+  background-color: #387034;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  transition: background-color 0.2s;
+  text-align: center;
+}
+
+.new-chat-button:hover {
+  background-color: #4CAF50;
+}
+
+.panel-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #387034;
+  margin-bottom: 15px;
+}
+
+.chat-threads-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto; 
+  flex-grow: 1;
+}
+
+.thread-entry {
+  padding: 10px 15px;
+  margin-bottom: 8px;
+  background-color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.thread-entry:hover {
+  background-color: #e8f5e9;
+}
+
+.thread-entry.active {
+  background-color: #387034;
+  color: white;
+  font-weight: 600;
+}
+
+.thread-entry.empty {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+
+/* Remove old history styles */
+.chat-history, .chat-entry {
+    display: none;
+}
+
+/* --- INTERACTION PANEL (RIGHT - MAIN CHAT AREA) --- */
+
+.chat-interaction-panel {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 0 20px; /* Only side padding */
+  overflow: hidden;
+}
+
+/* The area where messages appear (the scrollable content) */
+.chat-message-history {
+  flex-grow: 1; 
+  width: 100%;
+  max-width: 800px; /* Center and limit width of chat flow */
+  margin: 0 auto;
+  overflow-y: auto;
+  padding: 20px 0; 
+  
+  display: flex;
+  flex-direction: column;
+  gap: 12px; 
+}
+
+/* Center content when chat is empty */
+.chat-main-content-wrapper {
+  flex-grow: 1; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.chat-page-logo {
+  width: 150px;
+  height: auto;
+  margin-bottom: 25px;
+}
+
+.welcome-bubble {
+  background-color: #ffffff;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  color: #555;
+  max-width: 500px;
+}
+
+.welcome-bubble p {
+  margin: 0;
+}
+
+.welcome-bubble .translation {
+  font-size: 14px;
+  color: #888;
+  margin-top: 5px;
+}
+
+
+/* --- CHAT BUBBLE STYLES --- */
+
+.chat-message-container {
+  display: flex; 
+  width: 100%;
+}
+
+.message-bubble {
+  max-width: 75%; 
+  padding: 12px 18px;
+  border-radius: 20px; 
+  word-wrap: break-word; 
+  font-size: 16px;
+  line-height: 1.5;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* AI Message (Left Alignment) */
+.ai .message-bubble {
+  background-color: #ffffff; 
+  color: #333;
+  border: 1px solid #e0e0e0;
+  border-top-left-radius: 5px; 
+}
+
+/* User Message (Right Alignment) */
+.user {
+  justify-content: flex-end; 
+}
+
+.user .message-bubble {
+  background-color: #387034; 
+  color: white;
+  border-top-right-radius: 5px; 
+}
+
+
+/* --- Controls and Input --- */
+
+.chat-controls-wrapper {
+  padding: 15px 0 25px 0; 
+  width: 100%;
+  max-width: 800px; 
+}
+
+.chat-controls {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.chat-input-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 5px; 
+  background-color: white;
+  border: 1px solid #dcdcdc;
+  border-radius: 25px; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.chat-input {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background-color: transparent;
+  color: #333;
+  padding: 10px 15px; 
+}
+
+.send-button {
+  background-color: #387034;
+  border: none;
+  border-radius: 50%;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+  transition: background-color 0.2s;
+}
+
+.send-button:hover:not(:disabled) {
+  background-color: #2b5628;
+}
+
+.send-button:disabled {
+  background-color: #a5a5a5;
+  cursor: not-allowed;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 5px; 
+}
+
+.action-buttons button {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+}
+
+.btn-speak {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn-speak:hover {
+  background-color: #45a049;
+}
+
+.btn-upload {
+  background-color: #e8f5e9;
+  color: #387034;
+  border: 1px solid #c8e6c9;
+}
+
+.btn-upload:hover {
+  background-color: #dcedc8;
+}
+/* --- Inside ChatAI.css --- */
+
+.thread-entry {
+    /* Existing styles... */
+    display: flex; /* Enable flexbox for horizontal layout */
+    justify-content: space-between; /* Space title and button */
+    align-items: center;
+    position: relative;
+    /* Hide button by default */
+}
+
+.thread-title-text {
+    flex-grow: 1; /* Allow title to take up most space */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: 10px; /* Space between title and button */
+}
+
+.thread-delete-button {
+    background: none;
+    border: none;
+    color: #a00; /* Dark red color for delete */
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 2px 5px;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.2s, background-color 0.2s;
+    border-radius: 4px;
+}
+
+/* Show the delete button on hover over the entire thread entry */
+.thread-entry:hover .thread-delete-button {
+    opacity: 1;
+}
+
+.thread-delete-button:hover {
+    background-color: #fdd; /* Light red background on button hover */
+    color: #c00;
+}
+
+/* --- Add this to ChatAI.css --- */
+
+.logout-button {
+    background-color: #d1e7dd; /* Light green/teal background */
+    color: #0f5132; /* Dark green text */
+    border: 1px solid #badbcc;
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+    margin-right: 10px; /* Space it from the avatar */
+}
+
+.logout-button:hover {
+    background-color: #c0dbd0;
+    border-color: #a2c4b5;
+}

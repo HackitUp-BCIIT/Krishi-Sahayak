@@ -1,0 +1,275 @@
+/* Container for the entire page to center the card */
+.login-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* --- Background Image with blur effect --- */
+    background-image: url('https://www.keralatourism.org/responsible-tourism/images/kerala-agri-tourism-network/banner.webp');
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative; 
+    overflow: hidden; 
+}
+
+/* --- Pseudo-element for the blur effect and dark overlay --- */
+.login-page-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent dark overlay */
+    backdrop-filter: blur(5px); /* Blur strength */
+    z-index: 1; 
+}
+
+/* The main white card/container */
+.login-card {
+    width: 100%;
+    max-width: 400px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 40px 30px;
+    box-sizing: border-box;
+    text-align: center;
+    position: relative;
+    z-index: 2; /* Ensure the card is above the blurred overlay */
+}
+
+/* Header/Title */
+.header-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #3f51b5;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+/* Welcome Section */
+.welcome-section {
+    margin-bottom: 25px;
+}
+
+.logo-placeholder {
+    font-size: 30px;
+    color: #4CAF50;
+    margin-bottom: 5px;
+}
+
+.app-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4CAF50;
+    margin-bottom: 5px;
+}
+
+.welcome-text {
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* --- Form Styling --- */
+.login-form {
+    text-align: left;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.form-input:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 0 1px #4CAF50;
+}
+
+/* Password Group specific */
+.password-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.forgot-password-link {
+    font-size: 13px;
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.forgot-password-link:hover {
+    text-decoration: underline;
+}
+
+/* Main Login Button (Bright Green) */
+.login-button {
+    width: 100%;
+    padding: 14px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.login-button:hover {
+    background-color: #45a049;
+}
+
+/* Divider "Or continue with" */
+.divider-or {
+    font-size: 13px;
+    color: #888;
+    position: relative;
+    text-align: center;
+    margin: 25px 0;
+}
+
+.divider-or::before,
+.divider-or::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background: #e0e0e0;
+}
+
+.divider-or::before {
+    left: 0;
+}
+
+.divider-or::after {
+    right: 0;
+}
+
+/* Social Login Buttons */
+.social-login-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.social-button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.facebook-button {
+    background-color: #e8f5e9;
+    color: #333;
+}
+
+.google-button {
+    background-color: #e8f5e9;
+    color: #333;
+}
+
+.facebook-button:hover,
+.google-button:hover {
+    background-color: #dcedc8;
+}
+
+/* Signup Prompt */
+.signup-prompt {
+    font-size: 14px;
+    color: #555;
+    margin-top: 20px;
+}
+
+.signup-link {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.signup-link:hover {
+    text-decoration: underline;
+}
+/* ... (all your existing CSS is above) */
+
+/* --- Styles for Password Toggle Button --- */
+
+/* This new container will hold the input and the button */
+.password-input-container {
+    position: relative;
+    width: 100%;
+}
+
+/* We need to add padding to the input to prevent text from going under the button */
+.password-input-container .form-input {
+    padding-right: 55px; /* Adjust this value as needed */
+}
+
+/* This is the style for the "Show/Hide" button */
+.password-toggle-btn {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 4px;
+}
+
+/* FIX: Styles for Back to Home Link (Login/Signup) */
+.back-to-home-link {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-size: 14px;
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.back-to-home-link:hover {
+    color: #387034;
+    text-decoration: underline;
+}
